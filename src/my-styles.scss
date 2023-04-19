@@ -1,0 +1,67 @@
+$colorTheme: #f5efe1;
+
+.btn {
+  border: 2px solid darken($colorTheme, 15%);
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 70px;
+  min-height: 40px;
+}
+
+button {
+  @extend .btn;
+  background: darken($colorTheme, 5%);
+  color: darken($colorTheme, 60%);
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  transform: skewX(20deg);
+  margin: 1rem;
+
+  &::before {
+    @extend .btn;
+    content: attr(data-label);
+    background: $colorTheme;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    z-index: -1;
+    transition: all 0.5s ease;
+  }
+
+  &:hover {
+    &::before {
+      top: -2px;
+      left: -2px;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background: darken($colorTheme, 30%);
+    &::before {
+      content: attr(data-label);
+      top: -1rem;
+      left: 1rem;
+      z-index: -1;
+      transition: all 0.7s ease;
+    }
+  }
+}
+
+section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+span {
+  transform: skewX(20deg);
+  min-width: 2rem;
+}
